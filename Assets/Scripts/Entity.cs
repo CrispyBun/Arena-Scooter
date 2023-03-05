@@ -22,5 +22,9 @@ public class Entity : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
