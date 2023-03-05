@@ -16,11 +16,6 @@ public class Ship : Entity
         base.Start();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         float thrust = (shipControlThrust ? thrustForce : 0) * Time.fixedDeltaTime;

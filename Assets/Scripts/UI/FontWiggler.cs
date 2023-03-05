@@ -13,7 +13,6 @@ public class FontWiggler : MonoBehaviour
     private float swayAmount = 5f;
     private float animSpeed = 6;
 
-    // Start is called before the first frame update
     void Start()
     {
         textPos = GetComponent<RectTransform>();
@@ -23,7 +22,6 @@ public class FontWiggler : MonoBehaviour
         originY = textPos.anchoredPosition.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float animProgression = Mathf.Sin(Time.unscaledTime * animSpeed);
