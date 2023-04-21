@@ -57,11 +57,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Quicksand-Bold SDF
+  m_Name: SHADOWED Quicksand-Bold SDF
   m_EditorClassIdentifier: 
-  hashCode: -1183279196
+  hashCode: -1267582813
   material: {fileID: 7405293332462163399}
-  materialHashCode: -2023877116
+  materialHashCode: -1875442525
   m_Version: 1.1.0
   m_SourceFontFileGUID: ff3cf64059b94ba4683db996ad5602dd
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: ff3cf64059b94ba4683db996ad5602dd, type: 3}
@@ -2708,7 +2708,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Quicksand-Bold SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - UNDERLAY_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -2766,7 +2767,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.153
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333

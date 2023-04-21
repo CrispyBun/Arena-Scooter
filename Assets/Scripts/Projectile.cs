@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
 
     protected Rigidbody2D rigidBody;
 
-    virtual protected void Start()
+    virtual protected void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         SetTeam(team);
@@ -36,6 +36,12 @@ public class Projectile : MonoBehaviour
                 spriteRenderer.color = new Color(0.8962264f, 0.2916963f, 0.3142128f);
                 break;
         }
+    }
+
+    public void SetVelocity(Vector2 newVelocity)
+    {
+        rigidBody.velocity = Vector3.zero;
+        rigidBody.AddRelativeForce(newVelocity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

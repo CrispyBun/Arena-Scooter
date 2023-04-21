@@ -14,9 +14,11 @@ public class Entity : MonoBehaviour
     [SerializeField] private float health = 100f;
     [SerializeField] private Team team;
 
+    private float bounceAwayForce = 3f;
+
     protected Rigidbody2D rigidBody;
 
-    virtual protected void Start()
+    protected virtual void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -36,6 +38,20 @@ public class Entity : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void BounceAwayFrom(Transform bounceTarget)
+    {
+        rigidBody.AddForce((transform.position - bounceTarget.position).normalized * bounceAwayForce, ForceMode2D.Impulse);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Entity collidingEntity = collision.gameObject.GetComponent<Entity>();
+        if (collidingEntity != null)
+        {
+            BounceAwayFrom(collision.transform);
         }
     }
 }
