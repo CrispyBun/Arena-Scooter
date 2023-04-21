@@ -14,6 +14,8 @@ public class ShipEnemy : Ship
 
     protected float GetPlayerAngle()
     {
+        if (playerShip == null) return 0;
+
         // i hate quaternions
         // i hate quaternions
         // i hate quaternions
@@ -27,6 +29,7 @@ public class ShipEnemy : Ship
 
     protected float GetPlayerDistance()
     {
+        if (playerShip == null) return 0;
         return Vector3.Distance(transform.position, playerShip.transform.position);
     }
 }

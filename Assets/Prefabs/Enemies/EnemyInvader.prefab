@@ -149,6 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   team: 2
+  flashMaterial: {fileID: 2100000, guid: 721729689e2461243ad1289a4d05c1cb, type: 2}
+  flashDurationSeconds: 0.1
   thrustForce: 200
   turnForce: 750
 --- !u!1001 &6012632074916743390

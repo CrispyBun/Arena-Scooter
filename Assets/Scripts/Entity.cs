@@ -14,13 +14,21 @@ public class Entity : MonoBehaviour
     [SerializeField] private float health = 100f;
     [SerializeField] private Team team;
 
-    private float bounceAwayForce = 3f;
+    [SerializeField] private Material flashMaterial;
+    private float flashDurationSeconds = 0.1f;
+    private Coroutine flashRoutine;
 
     protected Rigidbody2D rigidBody;
+    private SpriteRenderer spriteRenderer;
+    private Material material;
+
+    private float bounceAwayForce = 3f;
 
     protected virtual void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        material = spriteRenderer.material;
     }
 
     public Team GetTeam()
@@ -34,6 +42,7 @@ public class Entity : MonoBehaviour
 
     public void Damage(float damage)
     {
+        Flash();
         health -= damage;
         if (health <= 0)
         {
@@ -53,5 +62,19 @@ public class Entity : MonoBehaviour
         {
             BounceAwayFrom(collision.transform);
         }
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(flashDurationSeconds);
+        spriteRenderer.material = material;
+        flashRoutine = null;
+    }
+
+    private void Flash()
+    {
+        if (flashRoutine != null) StopCoroutine(flashRoutine);
+        flashRoutine = StartCoroutine(FlashRoutine());
     }
 }
