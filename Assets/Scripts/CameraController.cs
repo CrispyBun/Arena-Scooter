@@ -23,11 +23,12 @@ public class CameraController : MonoBehaviour
         {
             Vector2 objectPos = focusedObject.transform.position;
             Vector2 arenaBounds = arena.GetBounds();
+            arenaBounds /= 2;
 
-            float cameraMovementX = Mathf.Min(Mathf.Abs(objectPos.x) / (arenaBounds.x / 2), 1f);
-            float cameraMovementY = Mathf.Min(Mathf.Abs(objectPos.y) / (arenaBounds.y / 2), 1f);
+            float cameraMovementX = Mathf.Min(Mathf.Abs(objectPos.x) / arenaBounds.x, 1f);
+            float cameraMovementY = Mathf.Min(Mathf.Abs(objectPos.y) / arenaBounds.y, 1f);
 
-            transform.position = new Vector3(cameraMovementX * Mathf.Sign(objectPos.x), cameraMovementY * Mathf.Sign(objectPos.y), -10);
+            transform.position = new Vector3(cameraMovementX * Mathf.Sign(objectPos.x) * (arenaBounds.x - viewWidth/2), cameraMovementY * Mathf.Sign(objectPos.y) * (arenaBounds.y - viewHeight / 2), -10);
         }
     }
 }
