@@ -11,8 +11,10 @@ public enum Team
 
 public class Entity : MonoBehaviour
 {
+    [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float health = 100f;
     [SerializeField] private Team team;
+    [SerializeField] private int scoreValue = 0;
 
     [SerializeField] private Material flashMaterial;
     private float flashDurationSeconds = 0.1f;
@@ -39,6 +41,18 @@ public class Entity : MonoBehaviour
     {
         team = newTeam;
     }
+    public float GetHealth()
+    {
+        return health;
+    }
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    public int GetScoreValue()
+    {
+        return scoreValue;
+    }
 
     public void Damage(float damage)
     {
@@ -46,6 +60,7 @@ public class Entity : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            GameManager.AddScore(scoreValue);
             Destroy(gameObject);
         }
     }

@@ -147,8 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79525b776bef9848ad2e0361aa05dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 20
   health: 20
   team: 2
+  scoreValue: 20
   flashMaterial: {fileID: 2100000, guid: 721729689e2461243ad1289a4d05c1cb, type: 2}
   thrustForce: 200
   turnForce: 750

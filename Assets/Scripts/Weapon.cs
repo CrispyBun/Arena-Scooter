@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private Team team;
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private float shotCooldownSeconds;
-    [SerializeField] private float shotSpread;
-    [SerializeField] private float shotSpeedDeviation;
-    [SerializeField] private int shotAmount;
+    [SerializeField] protected Team team;
+    [SerializeField] protected GameObject projectile;
+    [SerializeField] protected float shotCooldownSeconds;
+    [SerializeField] protected float shotSpread;
+    [SerializeField] protected float shotSpeedDeviation;
+    [SerializeField] protected int shotAmount;
 
-    private float shotCooldownTimer = 0;
+    protected float shotCooldownTimer = 0;
 
     void Start()
     {
@@ -27,18 +27,18 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
         for (int i = 0; i < shotAmount; i++)
         {
-            SpawnBullet();
+            float bulletAngle = (Random.value - 0.5f) * shotSpread;
+            SpawnBullet(bulletAngle);
         }
     }
 
-    private void SpawnBullet()
+    protected void SpawnBullet(float angle)
     {
-        float bulletAngleAddition = (Random.value - 0.5f) * shotSpread;
-        Quaternion bulletAngle = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, bulletAngleAddition));
+        Quaternion bulletAngle = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, angle));
 
         GameObject projectileObject = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, 10), bulletAngle);
         Projectile projectileClass = projectileObject.GetComponent<Projectile>();
