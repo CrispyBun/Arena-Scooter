@@ -9,7 +9,7 @@ public class UIScoreDisplay : MonoBehaviour
 
     private float scale = 1f;
     private float scaleIncrease = 0.25f;
-    private float scaleFalloff = 0.01f;
+    private float scaleFalloff = 0.005f;
     private float scaleMax = 2f;
 
     void Start()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class InBoundKeeper : MonoBehaviour
     private Rigidbody2D rigidBody;
 
     [SerializeField] private InBoundKeepType boundKeepType;
+
+    [SerializeField] private GameObject bounceBulletSpawnProjectile;
+    private float bouncebulletSpawnSpeedRequirement = 16f;
     void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -33,6 +37,23 @@ public class InBoundKeeper : MonoBehaviour
                 break;
 
             case InBoundKeepType.Bounce:
+                // player spawns bullets on big wall bounces
+                if (bounceBulletSpawnProjectile && rigidBody.velocity.magnitude >= bouncebulletSpawnSpeedRequirement && !arena.PointInBounds(transform.position))
+                {
+                    int shotAmount = 32;
+                    for (int i = 0; i < shotAmount; i++)
+                    {
+                        float angle = (Convert.ToSingle(i) / Convert.ToSingle(shotAmount - 1) - 0.5f) * 360;
+                        Quaternion bulletAngle = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, angle));
+
+                        GameObject projectileObject = Instantiate(bounceBulletSpawnProjectile, new Vector3(transform.position.x, transform.position.y, 10), bulletAngle);
+                        Projectile projectileClass = projectileObject.GetComponent<Projectile>();
+
+                        projectileClass.SetTeam(Team.Player);
+                        projectileClass.SetVelocity(Vector2.up * 1000f);
+                    }
+                }
+
                 Vector3 position = gameObject.transform.position;
                 Vector2 bounds = arena.GetBounds() / 2f;
 

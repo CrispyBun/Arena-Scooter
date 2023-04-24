@@ -150,7 +150,7 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   team: 2
-  scoreValue: 20
+  scoreValue: 200
   flashMaterial: {fileID: 2100000, guid: 721729689e2461243ad1289a4d05c1cb, type: 2}
   thrustForce: 200
   turnForce: 750

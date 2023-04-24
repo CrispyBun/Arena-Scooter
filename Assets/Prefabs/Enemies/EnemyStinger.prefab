@@ -148,10 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c4636953f20974ca4689bf333be565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 15
+  health: 15
   team: 2
-  scoreValue: 5
+  scoreValue: 25
   flashMaterial: {fileID: 2100000, guid: 721729689e2461243ad1289a4d05c1cb, type: 2}
   thrustForce: 150
   turnForce: 2500
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundKeepType: 1
+  bounceBulletSpawnProjectile: {fileID: 0}
 --- !u!1001 &867871718586768009
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class WeaponEvenSpread : Weapon
     {
         for (int i = 0; i < shotAmount; i++)
         {
-            float bulletAngle = (Convert.ToSingle(i) / Convert.ToSingle(shotAmount-1) - 0.5f) * shotSpread;
+            float bulletAngle = ((float)(i) / (float)(shotAmount-1) - 0.5f) * shotSpread;
             SpawnBullet(bulletAngle);
         }
     }

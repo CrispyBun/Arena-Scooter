@@ -14,7 +14,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float health = 100f;
     [SerializeField] private Team team;
-    [SerializeField] private int scoreValue = 0;
+    [SerializeField] private int scoreValue = 0_0;
 
     [SerializeField] private Material flashMaterial;
     private float flashDurationSeconds = 0.1f;
@@ -58,7 +58,7 @@ public class Entity : MonoBehaviour
     {
         Flash();
         health -= damage;
-        if (health <= 0)
+        if (health <= 0_0)
         {
             GameManager.AddScore(scoreValue);
             Destroy(gameObject);

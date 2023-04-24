@@ -7,7 +7,7 @@ public class Arena : MonoBehaviour
     private Vector2 bounds;
     private float safeBoundWiggleRoom = 5f;
 
-    void Start()
+    void Awake()
     {
         bounds = transform.lossyScale;
         InBoundKeeper.arena = this;
@@ -16,6 +16,10 @@ public class Arena : MonoBehaviour
     public Vector2 GetBounds()
     {
         return bounds;
+    }
+    public float GetSafeBoundWiggleRoom()
+    {
+        return safeBoundWiggleRoom;
     }
 
     public bool PointInBounds(Vector2 point)
@@ -49,5 +53,17 @@ public class Arena : MonoBehaviour
         float x = Random.Range(-bounds.x / 2, bounds.x / 2);
         float y = Random.Range(-bounds.y / 2, bounds.y / 2);
         return new Vector2(x, y);
+    }
+
+    public Vector2 GetRandomPointInOuterSafeBounds()
+    {
+        int axis = Mathf.RoundToInt(Random.value);
+        int side = Mathf.RoundToInt(Mathf.Sign(Random.value - 0.5f));
+        float length = Random.value - 0.5f;
+        if (axis == 0)
+        {
+            return new Vector2(length * (bounds.x + safeBoundWiggleRoom*2), side * ((bounds.y + safeBoundWiggleRoom*2) / 2));
+        }
+        return new Vector2(side * ((bounds.x+ safeBoundWiggleRoom*2) / 2), length * (bounds.y + safeBoundWiggleRoom*2));
     }
 }
