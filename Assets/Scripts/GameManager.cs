@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     private int waveDifficultyIncreaseScorePeriod = 1500;
     private int maxEnemiesTotal = 10;
 
+    static GameManager()
+    {
+        playtime = LoadPlaytime();
+    }
+
     private void Start()
     {
         ResetScore();
@@ -217,9 +222,40 @@ public class GameManager : MonoBehaviour
     public static void StopPlaytimeTracking()
     {
         playtime = playtime.Add(DateTime.Now.Subtract(playtimeTrackingPoint));
+        SavePlaytime();
     }
     public static string GetPlayTime()
     {
         return "Playtime: " + playtime.ToString(@"hh\:mm\:ss");
+    }
+
+    private static void SavePlaytime()
+    {
+        Directory.CreateDirectory("savedata");
+
+        string filename = "savedata/playtime.txt";
+
+        StreamWriter saveStream = new StreamWriter(filename);
+        saveStream.WriteLine(playtime.ToString());
+        saveStream.Close();
+    }
+
+    private static TimeSpan LoadPlaytime()
+    {
+        Directory.CreateDirectory("savedata");
+
+        string filename = "savedata/playtime.txt";
+
+
+        if (File.Exists(filename))
+        {
+            StreamReader loadStream = new StreamReader(filename);
+            string time = loadStream.ReadToEnd();
+            loadStream.Close();
+
+            return TimeSpan.Parse(time);
+        }
+
+        return new TimeSpan();
     }
 }
