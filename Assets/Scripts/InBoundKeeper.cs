@@ -32,7 +32,15 @@ public class InBoundKeeper : MonoBehaviour
             case InBoundKeepType.Destroy:
                 if (!arena.PointInSafeBounds(transform.position))
                 {
-                    Destroy(gameObject);
+                    Ship objectShipClass = GetComponent<Ship>();
+                    if (objectShipClass)
+                    {
+                        objectShipClass.DestroySelf();
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
                 }
                 break;
 

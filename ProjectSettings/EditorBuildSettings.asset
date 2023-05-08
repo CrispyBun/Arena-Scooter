@@ -7,6 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
+    guid: b9e2a2d82dfa53248ad9f7cbea629297
+  - enabled: 1
+    path: Assets/Scenes/HighScores.unity
     guid: 16da961ceca9275428192bd58b77312f
   - enabled: 1
     path: Assets/Scenes/Arena.unity

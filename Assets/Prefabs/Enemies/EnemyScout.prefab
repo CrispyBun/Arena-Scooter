@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8618220848751025684}
+  - {fileID: 6611159863828778935}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -147,15 +148,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efceec5180800074f98fe7301ecf81da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
-  health: 25
+  maxHealth: 20
+  health: 20
   team: 2
   scoreValue: 150
+  deathParticler: {fileID: 9085354749172384735, guid: f12b2d6b68cb7454d952cbf15be3c006, type: 3}
   flashMaterial: {fileID: 2100000, guid: 721729689e2461243ad1289a4d05c1cb, type: 2}
   thrustForce: 250
   turnForce: 750
+  thrustParticleSystem: {fileID: 6611159863828778933}
   turnToPointAngleMargin: 1
   approachPointDistanceMargin: 0
+--- !u!1001 &5971703991304042109
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5248318556432417126}
+    m_Modifications:
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675627880970992077, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+      propertyPath: m_Name
+      value: Thrust Particle System
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+--- !u!198 &6611159863828778933 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 675627880970992072, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+  m_PrefabInstance: {fileID: 5971703991304042109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6611159863828778935 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 675627880970992074, guid: a8d7c7711f180074496203c54114ab7b, type: 3}
+  m_PrefabInstance: {fileID: 5971703991304042109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6858754888388375283
 PrefabInstance:
   m_ObjectHideFlags: 0

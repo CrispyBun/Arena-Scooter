@@ -11,9 +11,28 @@ public class Ship : Entity
     [SerializeField] private float thrustForce = 1000;
     [SerializeField] private float turnForce = 2500;
 
+    [SerializeField] private ParticleSystem thrustParticleSystem;
+    private DeathParticler thrustParticleSystemClass;
+
     protected override void Start()
     {
         base.Start();
+        if (thrustParticleSystem)
+        {
+            thrustParticleSystem.Stop();
+            thrustParticleSystemClass = thrustParticleSystem.GetComponent<DeathParticler>();
+            thrustParticleSystemClass.DisableTimer();
+        }
+    }
+
+    public override void DestroySelf()
+    {
+        if (thrustParticleSystem)
+        {
+            thrustParticleSystem.Stop();
+            thrustParticleSystemClass.DetachParent();
+            base.DestroySelf();
+        }
     }
 
     private void FixedUpdate()
@@ -22,5 +41,20 @@ public class Ship : Entity
         float torque = ((shipControlLeft ? 1 : 0) - (shipControlRight ? 1 : 0)) * turnForce * Time.fixedDeltaTime;
         rigidBody.AddRelativeForce(Vector2.right * thrust, ForceMode2D.Force);
         rigidBody.AddTorque(torque, ForceMode2D.Force);
+
+        if (thrustParticleSystem)
+        {
+            if (shipControlThrust)
+            {
+                if (!thrustParticleSystem.isEmitting)
+                {
+                    thrustParticleSystem.Play();
+                }
+            }
+            else
+            {
+                thrustParticleSystem.Stop();
+            }
+        }
     }
 }

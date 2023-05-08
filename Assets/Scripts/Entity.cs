@@ -16,6 +16,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private Team team;
     [SerializeField] private int scoreValue = 0_0;
 
+    [SerializeField] private GameObject deathParticler;
+
     [SerializeField] private Material flashMaterial;
     private float flashDurationSeconds = 0.1f;
     private Coroutine flashRoutine;
@@ -56,13 +58,30 @@ public class Entity : MonoBehaviour
 
     public void Damage(float damage)
     {
+        if (this is ShipPlayer)
+        {
+            ShipPlayer playerClass = (ShipPlayer)this;
+            playerClass.DisableNearMissReward();
+        }
+
         Flash();
         health -= damage;
         if (health <= 0_0)
         {
-            GameManager.AddScore(scoreValue);
-            Destroy(gameObject);
+            DestroySelf();
         }
+    }
+
+    public virtual void DestroySelf()
+    {
+        if (deathParticler)
+        {
+            GameObject instance = Instantiate(deathParticler);
+            instance.transform.position = transform.position;
+        }
+
+        GameManager.AddScore(scoreValue);
+        Destroy(gameObject);
     }
 
     public void BounceAwayFrom(Transform bounceTarget)
