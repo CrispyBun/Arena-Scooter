@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour
 
     private float newWaveMinDelaySeconds = 2f;
     private float newWaveMaxDelaySeconds = 5f;
-    private float newWaveTimer = 0f;
-    private int waveDifficulty = 0;
-    private int maxEnemiesPerSpawn = 3;
+    private float newWaveTimer = 0_0;
+    private int waveDifficulty = 0_0;
+    private int maxEnemiesPerSpawn = 1;
     private int enemyCountIncreaseScorePeriod = 2550;
-    private int waveDifficultyIncreaseScorePeriod = 1500;
+    private int waveDifficultyIncreaseScorePeriod = 2048;
     private int maxEnemiesTotal = 10;
 
     static GameManager()
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
             if (enemies.Length < maxEnemiesTotal)
             {
                 newWaveTimer = UnityEngine.Random.Range(newWaveMinDelaySeconds, newWaveMaxDelaySeconds);
-                maxEnemiesPerSpawn = 3 + score / enemyCountIncreaseScorePeriod;
+                maxEnemiesPerSpawn = 1 + score / enemyCountIncreaseScorePeriod;
                 waveDifficulty = score / waveDifficultyIncreaseScorePeriod;
                 SpawnWave();
             }
