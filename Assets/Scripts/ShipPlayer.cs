@@ -9,6 +9,10 @@ public class ShipPlayer : Ship
     private float nearMissRewardTimer = 0f;
     private float nearMissRewardRadius = 20f;
 
+    [SerializeField] private AudioSource audioNearMissChance;
+    [SerializeField] private AudioSource audioNearMissFail;
+    [SerializeField] private AudioSource audioNearMissSuccess;
+
     protected override void Start()
     {
         base.Start();
@@ -35,6 +39,8 @@ public class ShipPlayer : Ship
                         projectile.SetVelocity(Vector2.up * 50f);
                     }
                 }
+
+                audioNearMissSuccess.Play();
             }
             nearMissRewardActive = false;
         }
@@ -42,11 +48,15 @@ public class ShipPlayer : Ship
 
     public void ActivateNearMissReward()
     {
+        if (!nearMissRewardActive) audioNearMissChance.Play();
+
         nearMissRewardActive = true;
         nearMissRewardTimer = nearMissRewardTimeSeconds;
     }
     public void DisableNearMissReward()
     {
+        if (nearMissRewardActive) audioNearMissFail.Play();
+
         nearMissRewardActive = false;
     }
 }

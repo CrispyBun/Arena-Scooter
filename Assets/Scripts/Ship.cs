@@ -14,6 +14,9 @@ public class Ship : Entity
     [SerializeField] private ParticleSystem thrustParticleSystem;
     private DeathParticler thrustParticleSystemClass;
 
+    [SerializeField] private AudioSource thrustAudioSource;
+    [SerializeField] private AudioSource thrustStopAudioSource;
+
     protected override void Start()
     {
         base.Start();
@@ -25,13 +28,13 @@ public class Ship : Entity
         }
     }
 
-    public override void DestroySelf()
+    public override void DestroySelf(bool noParticles = false)
     {
         if (thrustParticleSystem)
         {
             thrustParticleSystem.Stop();
             thrustParticleSystemClass.DetachParent();
-            base.DestroySelf();
+            base.DestroySelf(noParticles);
         }
     }
 
@@ -42,18 +45,32 @@ public class Ship : Entity
         rigidBody.AddRelativeForce(Vector2.right * thrust, ForceMode2D.Force);
         rigidBody.AddTorque(torque, ForceMode2D.Force);
 
-        if (thrustParticleSystem)
+        if (shipControlThrust)
         {
-            if (shipControlThrust)
+            if (!thrustParticleSystem.isEmitting)
             {
-                if (!thrustParticleSystem.isEmitting)
+                thrustParticleSystem.Play();
+            }
+
+            if (this is ShipPlayer)
+            {
+                if (!thrustAudioSource.isPlaying)
                 {
-                    thrustParticleSystem.Play();
+                    thrustAudioSource.Play();
                 }
             }
-            else
+        }
+        else
+        {
+            thrustParticleSystem.Stop();
+
+            if (this is ShipPlayer)
             {
-                thrustParticleSystem.Stop();
+                if (thrustAudioSource.isPlaying)
+                {
+                    thrustAudioSource.Stop();
+                    thrustStopAudioSource.Play();
+                }
             }
         }
     }

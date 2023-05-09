@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4057927bb75814d8ff3f4777ac8b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootSound: {fileID: 0}
   team: 2
   projectile: {fileID: 6643085557416231345, guid: 19b8464951124624389843fbeb728834, type: 3}
   shotCooldownSeconds: 2

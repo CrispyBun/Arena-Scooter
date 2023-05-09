@@ -84,7 +84,7 @@ public class UIButton : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Space))
             {
-                // ui sfx go here later
+                AudioManager.Play(Sound.ButtonClick);
                 OnButtonClick();
             }
 
@@ -129,6 +129,8 @@ public class UIButton : MonoBehaviour
 
     private void SwitchNavigation(GameObject button)
     {
+        AudioManager.Play(Sound.ButtonSelect);
+
         UIButton switchingButtonClass = button.GetComponent<UIButton>();
         selected = false;
         switchingButtonClass.SelectButton();

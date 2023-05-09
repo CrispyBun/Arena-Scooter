@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] private AudioSource shootSound;
+
     [SerializeField] protected Team team;
     [SerializeField] protected GameObject projectile;
     [SerializeField] protected float shotCooldownSeconds;
@@ -23,6 +25,7 @@ public class Weapon : MonoBehaviour
         if (shotCooldownTimer <= 0)
         {
             Shoot();
+            if (shootSound) shootSound.Play();
             shotCooldownTimer = shotCooldownSeconds;
         }
     }

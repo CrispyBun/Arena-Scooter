@@ -35,7 +35,7 @@ public class InBoundKeeper : MonoBehaviour
                     Ship objectShipClass = GetComponent<Ship>();
                     if (objectShipClass)
                     {
-                        objectShipClass.DestroySelf();
+                        objectShipClass.DestroySelf(true);
                     }
                     else
                     {

@@ -18,6 +18,8 @@ public class Entity : MonoBehaviour
 
     [SerializeField] private GameObject deathParticler;
 
+    [SerializeField] private AudioSource hitSound;
+
     [SerializeField] private Material flashMaterial;
     private float flashDurationSeconds = 0.1f;
     private Coroutine flashRoutine;
@@ -64,23 +66,25 @@ public class Entity : MonoBehaviour
             playerClass.DisableNearMissReward();
         }
 
+        hitSound.Play();
+
         Flash();
         health -= damage;
         if (health <= 0_0)
         {
+            GameManager.AddScore(scoreValue);
             DestroySelf();
         }
     }
 
-    public virtual void DestroySelf()
+    public virtual void DestroySelf(bool noParticles = false)
     {
-        if (deathParticler)
+        if (deathParticler && !noParticles)
         {
             GameObject instance = Instantiate(deathParticler);
             instance.transform.position = transform.position;
         }
 
-        GameManager.AddScore(scoreValue);
         Destroy(gameObject);
     }
 
