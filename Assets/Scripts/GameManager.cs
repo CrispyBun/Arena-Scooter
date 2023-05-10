@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case 1: // Some scouts mixed in
-                enemyCount = Mathf.Min(enemyCount, 2);
+                enemyCount = Mathf.Max(enemyCount, 2);
                 int invaderCount = enemyCount / 2;
                 SpawnEnemies(enemyShipInvader, invaderCount);
                 SpawnEnemies(enemyShipScout, enemyCount - invaderCount);
@@ -140,9 +140,11 @@ public class GameManager : MonoBehaviour
                 SpawnEnemies(enemyShipRadar, enemyCount);
                 break;
 
-            case 6: // Splurters
-                enemyCount /= 5;
-                SpawnEnemies(enemyShipSplurter, enemyCount);
+            case 6: // Splurters and basics
+                enemyCount = Mathf.Max(enemyCount, 4);
+                int splurtCount = enemyCount / 5;
+                SpawnEnemies(enemyShipSplurter, splurtCount);
+                SpawnEnemies(enemyShipInvader, enemyCount - splurtCount);
                 break;
         }
     }
