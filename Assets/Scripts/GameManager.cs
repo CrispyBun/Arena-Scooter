@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject enemyShipInvader;
     [SerializeField] private GameObject enemyShipStinger;
     [SerializeField] private GameObject enemyShipScout;
+    [SerializeField] private GameObject enemyShipRadar;
+    [SerializeField] private GameObject enemyShipSplurter;
 
     private static int score;
     private static bool scoreAdded = false;
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
         int chosenWave = UnityEngine.Random.Range(0, waveDifficulty+1);
         int enemyCount = UnityEngine.Random.Range(1, maxEnemiesPerSpawn+1);
 
-        chosenWave = Mathf.Min(chosenWave, 4);
+        chosenWave = Mathf.Min(chosenWave, 6);
 
         switch (chosenWave)
         {
@@ -131,6 +133,16 @@ public class GameManager : MonoBehaviour
             case 4: // Just scouts
                 enemyCount /= 3;
                 SpawnEnemies(enemyShipScout, enemyCount);
+                break;
+
+            case 5: // Radars (upgraded scouts)
+                enemyCount /= 3;
+                SpawnEnemies(enemyShipRadar, enemyCount);
+                break;
+
+            case 6: // Splurters
+                enemyCount /= 5;
+                SpawnEnemies(enemyShipSplurter, enemyCount);
                 break;
         }
     }

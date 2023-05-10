@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float shotSpread;
     [SerializeField] protected float shotSpeedDeviation;
     [SerializeField] protected int shotAmount;
+    [SerializeField] protected float shotPowerMultiplier = 1;
 
     protected float shotCooldownTimer = 0;
 
@@ -48,6 +49,7 @@ public class Weapon : MonoBehaviour
 
         float shotSpeed = (1000f * Random.Range(0f, shotSpeedDeviation)) + 1000f;
         if (team == Team.Enemy) shotSpeed /= 4f;
+        shotSpeed *= shotPowerMultiplier;
 
         projectileClass.SetTeam(team);
         projectileClass.SetVelocity(Vector2.up * shotSpeed);
