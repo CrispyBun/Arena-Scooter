@@ -55,6 +55,13 @@ public class Arena : MonoBehaviour
         return new Vector2(x, y);
     }
 
+    public Vector2 GetRandomPointInArenaCenter()
+    {
+        float x = Random.Range(-bounds.x / 3, bounds.x / 3);
+        float y = Random.Range(-bounds.y / 3, bounds.y / 3);
+        return new Vector2(x, y);
+    }
+
     public Vector2 GetRandomPointFromSide()
     {
         int side = Mathf.RoundToInt(Mathf.Sign(Random.value - 0.5f));

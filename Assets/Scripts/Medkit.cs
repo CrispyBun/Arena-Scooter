@@ -34,7 +34,7 @@ public class Medkit : MonoBehaviour
     {
         if (enable)
         {
-            Vector2 pos = InBoundKeeper.arena.GetRandomPointInBounds();
+            Vector2 pos = InBoundKeeper.arena.GetRandomPointInArenaCenter();
             transform.position = new Vector3(pos.x, pos.y, 15f);
             audioSpawn.Play();
         }

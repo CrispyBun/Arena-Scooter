@@ -212,7 +212,6 @@ public class GameManager : MonoBehaviour
             if (count > 10)
             {
                 enemyPosition = InBoundKeeper.arena.GetRandomPointFromSide();
-                Debug.Log("YA!!!!!!!!!!");
             }    
 
             Instantiate(enemy, enemyPosition, new Quaternion());
