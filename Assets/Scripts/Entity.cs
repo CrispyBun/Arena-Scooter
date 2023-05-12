@@ -115,4 +115,9 @@ public class Entity : MonoBehaviour
         if (flashRoutine != null) StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashRoutine());
     }
+
+    public void HealToFull()
+    {
+        health = maxHealth;
+    }
 }
