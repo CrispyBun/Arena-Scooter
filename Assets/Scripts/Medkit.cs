@@ -52,7 +52,7 @@ public class Medkit : MonoBehaviour
         Entity collidingEntity = collision.gameObject.GetComponent<ShipPlayer>();
         if (collidingEntity != null)
         {
-            collidingEntity.HealToFull();
+            collidingEntity.Heal(25f);
 
             SetEnabled(false);
             spawnTimer = 0_0;

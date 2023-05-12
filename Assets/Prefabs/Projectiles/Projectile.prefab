@@ -247,3 +247,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundKeepType: 1
+  bounceBulletSpawnProjectile: {fileID: 0}

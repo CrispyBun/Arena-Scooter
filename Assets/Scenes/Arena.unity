@@ -359,6 +359,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreDisplay: {fileID: 316221404}
   canvasGameOver: {fileID: 1155783688}
+  playerWeapons:
+  - {fileID: 6779626548706910182, guid: e559129a9b14fca44ab26f4a2149315e, type: 3}
+  - {fileID: 6647864166184722120, guid: 3b3dbf42cb531e94e80139f23346a415, type: 3}
+  - {fileID: 6647864166184722120, guid: 769e79bc567da874b8095667d8b9798a, type: 3}
+  - {fileID: 2933289249811164384, guid: aba2729a95efcfb4db1d996e10d07a72, type: 3}
+  - {fileID: 2933289249811164384, guid: 2a81f1cd4dbac494dafa1598930b448c, type: 3}
+  - {fileID: 6647864166184722120, guid: 0128182afefecf14a94f0bec66378f73, type: 3}
+  - {fileID: 6647864166184722120, guid: 668aa2c5c8b6296479b14478c71e8594, type: 3}
+  - {fileID: 6647864166184722120, guid: 1cca8c168a33ce34da53139c73beda09, type: 3}
+  - {fileID: 2933289249811164384, guid: 9667e99b562a7ce47a487ffed126445b, type: 3}
   player: {fileID: 849357984}
   enemyShipInvader: {fileID: 6012632075560371079, guid: 7782054ccb2a7a84d9e6abc42a63c20e, type: 3}
   enemyShipStinger: {fileID: 2923651737028215389, guid: 4b49f76185ab52c47bdb7cff81420db3, type: 3}
@@ -634,6 +644,10 @@ PrefabInstance:
     - target: {fileID: 6647864166184722120, guid: e2e24315bd65f6b49a110cac01e8317e, type: 3}
       propertyPath: m_Name
       value: WeaponPeaShooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647864166184722120, guid: e2e24315bd65f6b49a110cac01e8317e, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 6647864166184722127, guid: e2e24315bd65f6b49a110cac01e8317e, type: 3}
       propertyPath: m_RootOrder

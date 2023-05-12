@@ -120,4 +120,9 @@ public class Entity : MonoBehaviour
     {
         health = maxHealth;
     }
+
+    public void Heal(float healAmount)
+    {
+        health = Mathf.Min(health + healAmount, maxHealth);
+    }
 }

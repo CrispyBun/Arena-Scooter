@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIScoreDisplay scoreDisplay;
     [SerializeField] private GameObject canvasGameOver;
 
-    [SerializeField] private static AudioSource newWeaponSound;
+    private AudioSource newWeaponSound;
+    [SerializeField] private GameObject[] playerWeapons;
+    private int lastPickedWeapon = -1;
 
     [SerializeField] private GameObject player;
 
@@ -34,7 +38,7 @@ public class GameManager : MonoBehaviour
     private int waveDifficultyIncreaseScorePeriod = 2048;
     private int maxEnemiesTotal = 10;
 
-    private static int newWeaponScoreInterval = 1000;
+    private static int newWeaponScoreInterval = 2000;
     private static int newWeaponScoreProgress = 0_0;
 
     static GameManager()
@@ -80,6 +84,39 @@ public class GameManager : MonoBehaviour
                 SpawnWave();
             }
         }
+
+        if (newWeaponScoreProgress >= newWeaponScoreInterval)
+        {
+            newWeaponSound.Play();
+            newWeaponScoreProgress = 0;
+            AssignNewWeapon();
+        }
+    }
+
+    private void AssignNewWeapon()
+    {
+        if (player)
+        {
+            for (int i = 0; i < player.transform.childCount; i++)
+            {
+                Transform child = player.transform.GetChild(i);
+                if (!child.transform.gameObject.CompareTag("Weapon")) continue;
+
+                Destroy(child.gameObject);
+
+                int newWeaponIndex = UnityEngine.Random.Range(0, playerWeapons.Length);
+                if (newWeaponIndex == lastPickedWeapon) newWeaponIndex++;
+                if (newWeaponIndex >= playerWeapons.Length) newWeaponIndex = 0;
+
+                GameObject newWeapon = Instantiate(playerWeapons[newWeaponIndex]);
+                newWeapon.transform.parent = player.transform;
+                newWeapon.transform.localPosition = new Vector3(1f, 0f, 0f);
+                newWeapon.transform.localRotation = Quaternion.Euler(0f, 0f, -90f);
+
+                lastPickedWeapon = newWeaponIndex;
+                break;
+            }
+        }
     }
 
     public static void ResetScore()
@@ -98,12 +135,6 @@ public class GameManager : MonoBehaviour
     private static void ProgressNewWeapon(int addedScore)
     {
         newWeaponScoreProgress += addedScore;
-
-        if (newWeaponScoreProgress >= newWeaponScoreInterval)
-        {
-            newWeaponSound.Play();
-            newWeaponScoreProgress = 0;
-        }
     }
 
     public static float GetNewWeaponProgress()
@@ -115,10 +146,8 @@ public class GameManager : MonoBehaviour
     {
         // i made a different system where i had a list of wave spawn methods from which one was chosen and called randomly
         // but honestly it just feels less messy to have one large method with a switch statement
-        int chosenWave = UnityEngine.Random.Range(0, waveDifficulty+1);
+        int chosenWave = UnityEngine.Random.Range(0, Mathf.Min(waveDifficulty +1, 6));
         int enemyCount = UnityEngine.Random.Range(1, maxEnemiesPerSpawn+1);
-
-        chosenWave = Mathf.Min(chosenWave, 6);
 
         switch (chosenWave)
         {
@@ -137,6 +166,7 @@ public class GameManager : MonoBehaviour
                 Vector2 arenaBounds = InBoundKeeper.arena.GetBounds();
 
                 enemyCount = Mathf.Max(enemyCount, 2);
+                enemyCount = Mathf.Min(enemyCount, 8);
                 float arenaBoundWiggleRoom = InBoundKeeper.arena.GetSafeBoundWiggleRoom();
                 for (int i = 0; i < enemyCount; i++)
                 {
@@ -179,6 +209,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Vector3 enemyPosition = InBoundKeeper.arena.GetRandomPointInOuterSafeBounds();
+            if (count > 10)
+            {
+                enemyPosition = InBoundKeeper.arena.GetRandomPointFromSide();
+                Debug.Log("YA!!!!!!!!!!");
+            }    
+
             Instantiate(enemy, enemyPosition, new Quaternion());
         }
     }
