@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIScoreDisplay scoreDisplay;
     [SerializeField] private GameObject canvasGameOver;
 
+    [SerializeField] private static AudioSource newWeaponSound;
+
     [SerializeField] private GameObject player;
 
     [SerializeField] private GameObject enemyShipInvader;
@@ -32,6 +34,9 @@ public class GameManager : MonoBehaviour
     private int waveDifficultyIncreaseScorePeriod = 2048;
     private int maxEnemiesTotal = 10;
 
+    private static int newWeaponScoreInterval = 1000;
+    private static int newWeaponScoreProgress = 0_0;
+
     static GameManager()
     {
         playtime = LoadPlaytime();
@@ -39,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        newWeaponSound = GetComponent<AudioSource>();
+
         ResetScore();
         canvasGameOver.SetActive(false);
 
@@ -84,6 +91,24 @@ public class GameManager : MonoBehaviour
     {
         score += addedScore;
         scoreAdded = true;
+
+        ProgressNewWeapon(addedScore);
+    }
+
+    private static void ProgressNewWeapon(int addedScore)
+    {
+        newWeaponScoreProgress += addedScore;
+
+        if (newWeaponScoreProgress >= newWeaponScoreInterval)
+        {
+            newWeaponSound.Play();
+            newWeaponScoreProgress = 0;
+        }
+    }
+
+    public static float GetNewWeaponProgress()
+    {
+        return ((float)(newWeaponScoreProgress)) / ((float)newWeaponScoreInterval);
     }
 
     private void SpawnWave()
