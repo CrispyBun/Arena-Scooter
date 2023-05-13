@@ -45,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 887730e8a07fae2449c947fc9faac97c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.35
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   shootSound: {fileID: 1068409306018520040}
   team: 1
   projectile: {fileID: 6643085557416231345, guid: 19b8464951124624389843fbeb728834, type: 3}
-  shotCooldownSeconds: 0.025
+  shotCooldownSeconds: 0.03
   shotSpread: 360
   shotSpeedDeviation: 0
   shotAmount: 1

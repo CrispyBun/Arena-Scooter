@@ -48,6 +48,7 @@ MonoBehaviour:
   team: 2
   projectile: {fileID: 6643085557416231345, guid: 19b8464951124624389843fbeb728834, type: 3}
   shotCooldownSeconds: 4
-  shotSpread: 360
+  shotSpread: 320
   shotSpeedDeviation: 0
-  shotAmount: 10
+  shotAmount: 9
+  shotPowerMultiplier: 1

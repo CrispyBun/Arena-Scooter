@@ -30,6 +30,8 @@ public class Entity : MonoBehaviour
 
     private float bounceAwayForce = 3f;
 
+    private bool isDead = false;
+
     protected virtual void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -70,7 +72,7 @@ public class Entity : MonoBehaviour
 
         Flash();
         health -= damage;
-        if (health <= 0_0)
+        if (health <= 0_0 && !isDead)
         {
             GameManager.AddScore(scoreValue);
             DestroySelf();
@@ -85,6 +87,7 @@ public class Entity : MonoBehaviour
             instance.transform.position = transform.position;
         }
 
+        isDead = true;
         Destroy(gameObject);
     }
 

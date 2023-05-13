@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2933289249811164391}
   - component: {fileID: -8062986672583993488}
-  - component: {fileID: 5842584886340083413}
+  - component: {fileID: 5124298294685821001}
   m_Layer: 0
-  m_Name: WeaponCircler
+  m_Name: WeaponBackAndForth
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5842584886340083413
+--- !u!114 &5124298294685821001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,14 +138,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2933289249811164384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0cef7c741dd8348b7ec3bc9ddb7bbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 941146fec49642c47861de51d8bb6f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootSound: {fileID: -8062986672583993488}
   team: 1
   projectile: {fileID: 6643085557416231345, guid: 19b8464951124624389843fbeb728834, type: 3}
-  shotCooldownSeconds: 1
-  shotSpread: 342
+  shotCooldownSeconds: 0.3
+  shotSpread: 90
   shotSpeedDeviation: 0
-  shotAmount: 20
+  shotAmount: 7
   shotPowerMultiplier: 1

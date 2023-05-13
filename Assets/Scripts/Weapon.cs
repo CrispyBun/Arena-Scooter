@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private AudioSource shootSound;
+    [SerializeField] protected AudioSource shootSound;
 
     [SerializeField] protected Team team;
     [SerializeField] protected GameObject projectile;
@@ -26,7 +26,6 @@ public class Weapon : MonoBehaviour
         if (shotCooldownTimer <= 0)
         {
             Shoot();
-            if (shootSound) shootSound.Play();
             shotCooldownTimer = shotCooldownSeconds;
         }
     }
@@ -38,9 +37,11 @@ public class Weapon : MonoBehaviour
             float bulletAngle = (Random.value - 0.5f) * shotSpread;
             SpawnBullet(bulletAngle);
         }
+
+        if (shootSound) shootSound.Play();
     }
 
-    protected void SpawnBullet(float angle)
+    protected void SpawnBullet(float angle, float shotSpeedMultiplier = 1)
     {
         Quaternion bulletAngle = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, angle));
 
@@ -49,7 +50,7 @@ public class Weapon : MonoBehaviour
 
         float shotSpeed = (1000f * Random.Range(0f, shotSpeedDeviation)) + 1000f;
         if (team == Team.Enemy) shotSpeed /= 4f;
-        shotSpeed *= shotPowerMultiplier;
+        shotSpeed *= shotPowerMultiplier * shotSpeedMultiplier;
 
         projectileClass.SetTeam(team);
         projectileClass.SetVelocity(Vector2.up * shotSpeed);

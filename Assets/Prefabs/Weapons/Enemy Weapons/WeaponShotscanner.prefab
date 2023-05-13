@@ -51,3 +51,4 @@ MonoBehaviour:
   shotSpread: 90
   shotSpeedDeviation: 0
   shotAmount: 5
+  shotPowerMultiplier: 1

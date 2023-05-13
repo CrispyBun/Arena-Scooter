@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
         ResetScore();
         canvasGameOver.SetActive(false);
+        newWeaponScoreProgress = 0;
 
         StartPlaytimeTracking();
     }
@@ -146,7 +147,7 @@ public class GameManager : MonoBehaviour
     {
         // i made a different system where i had a list of wave spawn methods from which one was chosen and called randomly
         // but honestly it just feels less messy to have one large method with a switch statement
-        int chosenWave = UnityEngine.Random.Range(0, Mathf.Min(waveDifficulty +1, 6));
+        int chosenWave = UnityEngine.Random.Range(0, Mathf.Min(waveDifficulty, 6)+1);
         int enemyCount = UnityEngine.Random.Range(1, maxEnemiesPerSpawn+1);
 
         switch (chosenWave)

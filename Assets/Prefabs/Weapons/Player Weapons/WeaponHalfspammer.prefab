@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2933289249811164384
+--- !u!1 &6647864166184722120
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2933289249811164391}
-  - component: {fileID: -8062986672583993488}
-  - component: {fileID: 5842584886340083413}
+  - component: {fileID: 6647864166184722127}
+  - component: {fileID: 1068409306018520040}
+  - component: {fileID: 6647864166184722126}
   m_Layer: 0
-  m_Name: WeaponCircler
+  m_Name: WeaponHalfspammer
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2933289249811164391
+--- !u!4 &6647864166184722127
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2933289249811164384}
+  m_GameObject: {fileID: 6647864166184722120}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &-8062986672583993488
+--- !u!82 &1068409306018520040
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2933289249811164384}
+  m_GameObject: {fileID: 6647864166184722120}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -129,23 +129,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5842584886340083413
+--- !u!114 &6647864166184722126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2933289249811164384}
+  m_GameObject: {fileID: 6647864166184722120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0cef7c741dd8348b7ec3bc9ddb7bbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c4057927bb75814d8ff3f4777ac8b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSound: {fileID: -8062986672583993488}
+  shootSound: {fileID: 1068409306018520040}
   team: 1
   projectile: {fileID: 6643085557416231345, guid: 19b8464951124624389843fbeb728834, type: 3}
-  shotCooldownSeconds: 1
-  shotSpread: 342
+  shotCooldownSeconds: 0.06
+  shotSpread: 100
   shotSpeedDeviation: 0
-  shotAmount: 20
+  shotAmount: 1
   shotPowerMultiplier: 1
