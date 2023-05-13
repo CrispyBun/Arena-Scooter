@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
 
         sounds[Sound.ButtonClick] = audioClick;
         sounds[Sound.ButtonSelect] = audioSelect;
+
+        Cursor.visible = false;
     }
 
     public static void Play(Sound sound)
