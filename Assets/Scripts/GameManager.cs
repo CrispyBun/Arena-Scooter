@@ -149,6 +149,7 @@ public class GameManager : MonoBehaviour
         // but honestly it just feels less messy to have one large method with a switch statement
         int chosenWave = UnityEngine.Random.Range(0, Mathf.Min(waveDifficulty, 6)+1);
         int enemyCount = UnityEngine.Random.Range(1, maxEnemiesPerSpawn+1);
+        enemyCount = Mathf.Max(enemyCount, 21);
 
         switch (chosenWave)
         {
